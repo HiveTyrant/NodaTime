@@ -1,0 +1,8 @@
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\bin\Debug\NodaTimeConsoleApplication.exe.config
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\bin\Debug\NodaTimeConsoleApplication.exe
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\bin\Debug\NodaTimeConsoleApplication.pdb
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\bin\Debug\NodaTime.dll
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\bin\Debug\NodaTime.xml
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.csprojResolveAssemblyReference.cache
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.exe
+D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.pdb
