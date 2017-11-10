@@ -31,8 +31,7 @@ namespace NodaTimeConsoleApplication
                 var nodaId = tzdbTateTimeZoneSource.MapTimeZoneId(bclZone);
                 if (nodaId != null) tzdbToBclMap[nodaId] = bclZone.Id;
             }
-
-
+            
             BclDateTimeZoneSource bclDateTimeZoneSource = new BclDateTimeZoneSource();
             var bclZones = bclDateTimeZoneSource.GetIds().OrderBy(id => id).ToList();
             foreach (var bclZone in bclZones)
@@ -41,8 +40,7 @@ namespace NodaTimeConsoleApplication
                 
             }
 
-
-
+            
             var x1 = TzdbDateTimeZoneSource.Default.CanonicalIdMap;
             var x2 = TzdbDateTimeZoneSource.Default.Aliases;
             var x3 = TzdbDateTimeZoneSource.Default.TzdbVersion;
