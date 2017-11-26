@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="NodaTimeWpfApplication.Views.MainViewUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:NodaTimeWpfApplication.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="768"
+             d:DesignWidth="1024"
+             d:DataContext="{d:DesignInstance Type=vm:MainViewViewModel, IsDesignTimeCreatable=True}"
+             >
+    <DockPanel Name="MainViewPanel" LastChildFill="True">
+        <DockPanel DockPanel.Dock="Top">
+            <DockPanel DockPanel.Dock="Left">
+                <ListView ItemsSource="{Binding TzdbZones}" SelectedItem="{Binding SelectedTzdb}">
+                </ListView>
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Left">
+                <ListView ItemsSource="{Binding StdZones}" SelectedItem="{Binding SelectedStd}">
+                </ListView>
+            </DockPanel>
+        </DockPanel>
+    </DockPanel>
+</UserControl>
+
+
+

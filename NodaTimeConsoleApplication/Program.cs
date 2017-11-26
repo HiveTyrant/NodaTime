@@ -13,7 +13,7 @@ namespace NodaTimeConsoleApplication
     {
         static void Main(string[] args)
         {
-            var now = SystemClock.Instance.Now;
+            var now = SystemClock.Instance.GetCurrentInstant();
 
             DateTimeZone tz = DateTimeZoneProviders.Bcl.GetSystemDefault();
             ZonedDateTime zonedNow = now.InZone(tz);
@@ -26,10 +26,11 @@ namespace NodaTimeConsoleApplication
             // from http://stackoverflow.com/questions/14968554/convert-nodatime-datetimezone-into-timezoneinfo
             var tzdbTateTimeZoneSource = TzdbDateTimeZoneSource.Default;
             var tzdbToBclMap = new SortedDictionary<string, string>();
-            foreach (var bclZone in TimeZoneInfo.GetSystemTimeZones())
+            foreach (TimeZoneInfo bclZone in TimeZoneInfo.GetSystemTimeZones())
             {
-                var nodaId = tzdbTateTimeZoneSource.MapTimeZoneId(bclZone);
-                if (nodaId != null) tzdbToBclMap[nodaId] = bclZone.Id;
+                //var nodaId = tzdbTateTimeZoneSource.MapTimeZoneId(bclZone);
+                if (tzdbTateTimeZoneSource.WindowsMapping.PrimaryMapping.TryGetValue(bclZone.Id, out var nodaId))
+                    tzdbToBclMap[nodaId] = bclZone.Id;
             }
             
             BclDateTimeZoneSource bclDateTimeZoneSource = new BclDateTimeZoneSource();

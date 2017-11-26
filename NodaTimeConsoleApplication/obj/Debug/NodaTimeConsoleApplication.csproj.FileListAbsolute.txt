@@ -6,3 +6,13 @@ D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsole
 D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.csprojResolveAssemblyReference.cache
 D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.exe
 D:\Project\Test\C#\ConsoleApplication\NodaTimeConsoleApplication\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.pdb
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\bin\Debug\NodaTimeConsoleApplication.exe.config
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\bin\Debug\NodaTimeConsoleApplication.exe
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\bin\Debug\NodaTimeConsoleApplication.pdb
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\bin\Debug\NodaTime.dll
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\bin\Debug\NodaTime.xml
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.csprojResolveAssemblyReference.cache
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.exe
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.pdb
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\obj\Debug\NodaTimeConsoleApplication.csproj.CoreCompileInputs.cache
+D:\Project\GitRepositories\NodaTime\NodaTimeConsoleApplication\bin\Debug\NodaTime.pdb
