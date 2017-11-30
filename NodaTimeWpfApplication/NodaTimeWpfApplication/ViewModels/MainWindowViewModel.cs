@@ -123,11 +123,9 @@ namespace NodaTimeWpfApplication.ViewModels
 
         #region Commands
 
-        public ICommand MenuCloseCommand =>
-            _menuCloseCommand ?? (_menuCloseCommand = new RelayCommand(arg => HandleShutdown(), null));
+        public ICommand MenuCloseCommand => _menuCloseCommand ?? (_menuCloseCommand = new RelayCommand(arg => HandleShutdown(), null));
 
-        public ICommand MenuAboutCommand =>
-            _menuAboutCommand ?? (_menuAboutCommand = new RelayCommand(arg => HandleShowAbout(), null));
+        public ICommand MenuAboutCommand => _menuAboutCommand ?? (_menuAboutCommand = new RelayCommand(arg => HandleShowAbout(), null));
 
         #endregion
 

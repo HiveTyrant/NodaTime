@@ -10,11 +10,16 @@
              d:DataContext="{d:DesignInstance Type=vm:MainViewViewModel, IsDesignTimeCreatable=True}"
              >
     <DockPanel Name="MainViewPanel" LastChildFill="True">
-        <DockPanel DockPanel.Dock="Top">
-            <DockPanel DockPanel.Dock="Left">
+        <DockPanel DockPanel.Dock="Left" LastChildFill="True">
+            <DockPanel DockPanel.Dock="Top" Height="50" VerticalAlignment="Center">
+                <Button Command="{Binding DebugTestCommand}" Content="Test" />
+            </DockPanel>
+            <DockPanel DockPanel.Dock="Top">
                 <ListView ItemsSource="{Binding TzdbZones}" SelectedItem="{Binding SelectedTzdb}">
                 </ListView>
             </DockPanel>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top">
             <DockPanel DockPanel.Dock="Left">
                 <ListView ItemsSource="{Binding StdZones}" SelectedItem="{Binding SelectedStd}">
                 </ListView>

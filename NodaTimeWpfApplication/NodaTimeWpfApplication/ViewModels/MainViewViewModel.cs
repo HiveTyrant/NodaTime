@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -19,6 +20,7 @@ namespace NodaTimeWpfApplication.ViewModels
         private string _selectedTzdb;
         private List<string> _stdZones;
         private string _selectedStd;
+        private ICommand _debugTestCommand;
 
         #endregion
 
@@ -36,6 +38,8 @@ namespace NodaTimeWpfApplication.ViewModels
 
         #region Bindable properties used from MainViewUserControl
 
+        public ICommand DebugTestCommand => _debugTestCommand ?? (_debugTestCommand = new RelayCommand(arg => Test(), null));
+            
         public IOrderedEnumerable<string> TzdbZones
         {
             get => _tzdbZones;
@@ -71,22 +75,38 @@ namespace NodaTimeWpfApplication.ViewModels
 
         public void Test()
         {
-            var now = SystemClock.Instance.GetCurrentInstant();
+            DateTimeZone tz;
+            Instant now = SystemClock.Instance.GetCurrentInstant();
 
-            DateTimeZone tz = DateTimeZoneProviders.Bcl.GetSystemDefault();
+            tz = DateTimeZoneProviders.Bcl.GetSystemDefault(); // = Romance Standard Time => (UTC+01:00) Brussels, Copenhagen, Madrid, Paris
             ZonedDateTime zonedNow = now.InZone(tz);
             Console.WriteLine("Current local time (Bcl): {0}", zonedNow);
 
+            tz = DateTimeZoneProviders.Bcl["Central Europe Standard Time"];
+            zonedNow = now.InZone(tz);
+            Console.WriteLine("CEST local time (Bcl): {0}", zonedNow);
+
+            tz = DateTimeZoneProviders.Tzdb.GetSystemDefault();
+            zonedNow = now.InZone(tz);
+            Console.WriteLine("Current local time (Tzdb): {0}", zonedNow);
+
+            tz = DateTimeZoneProviders.Tzdb["Europe/Warsaw"];
+            zonedNow = now.InZone(tz);
+            Console.WriteLine("Europe/Warsaw current time (Tzdb): {0}", zonedNow);
+
             // Obsolete way of create a list of Tzdb to Bcl mappings (at least some of 'em)
             // from http://stackoverflow.com/questions/14968554/convert-nodatime-datetimezone-into-timezoneinfo
-            var tzdbTateTimeZoneSource = TzdbDateTimeZoneSource.Default;
-            var tzdbToBclMap = new SortedDictionary<string, string>();
-            foreach (TimeZoneInfo bclZone in TimeZoneInfo.GetSystemTimeZones())
+            TzdbDateTimeZoneSource tzdbTateTimeZoneSource = TzdbDateTimeZoneSource.Default;
+            ReadOnlyCollection<TimeZoneInfo> systemTimeZones = TimeZoneInfo.GetSystemTimeZones();
+            SortedDictionary<string, string> tzdbToBclMap = new SortedDictionary<string, string>();
+            foreach (TimeZoneInfo bclZone in systemTimeZones)
             {
                 //var nodaId = tzdbTateTimeZoneSource.MapTimeZoneId(bclZone);
-                if (tzdbTateTimeZoneSource.WindowsMapping.PrimaryMapping.TryGetValue(bclZone.Id, out var nodaId))
+                if (tzdbTateTimeZoneSource.WindowsMapping.PrimaryMapping.TryGetValue(bclZone.Id, out var nodaId)) // "Dateline Standard Time" => "Etc/GMT+12"
                     tzdbToBclMap[nodaId] = bclZone.Id;
             }
+
+            var NodaTimeZoneLocations = tzdbTateTimeZoneSource.ZoneLocations;
 
             BclDateTimeZoneSource bclDateTimeZoneSource = new BclDateTimeZoneSource();
             var bclZones = bclDateTimeZoneSource.GetIds().OrderBy(id => id).ToList();
@@ -104,19 +124,6 @@ namespace NodaTimeWpfApplication.ViewModels
             //string bclZoneId = TzdbDateTimeZoneSource.Default..WindowsMapping..TranslateToBcl(tzdbZoneId);
 
             //string tzdbZoneId = TzdbDateTimeZoneSource.Default.WindowsMapping.TranslateToTzdb(bclZoneId);
-
-            tz = DateTimeZoneProviders.Bcl["Central Europe Standard Time"];
-            zonedNow = now.InZone(tz);
-            Console.WriteLine("CEST local time (Bcl): {0}", zonedNow);
-
-            tz = DateTimeZoneProviders.Tzdb.GetSystemDefault();
-            zonedNow = now.InZone(tz);
-            Console.WriteLine("Current local time (Tzdb): {0}", zonedNow);
-
-            tz = DateTimeZoneProviders.Tzdb["Europe/London"];
-            zonedNow = now.InZone(tz);
-            Console.WriteLine("London current time (Tzdb): {0}", zonedNow);
-
 
             foreach (var id in DateTimeZoneProviders.Tzdb.Ids)
             {
